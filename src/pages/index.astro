@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Tile from "../layouts/Tile.astro";
 import MoreTile from "../layouts/MoreTile.astro";
+import {SITE_TITLE} from "../consts";
 const allPosts = await Astro.glob("../pages/posts/*.md");
 allPosts.sort((a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate));
 ---
@@ -9,7 +10,9 @@ allPosts.sort((a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontma
 <BaseLayout>
   <section class="everydayfeed">
     <div class="section-content">
-      <h2 class="section-head">最新文章</h2>
+      <div class="indexpageheader">
+        <h2 class="section-head">👋你好,</h2><h2 class="section-des">这里是{SITE_TITLE}</h2>
+      </div>
       <ul role="list" class="section-tiles">
         {
           // tile-hero

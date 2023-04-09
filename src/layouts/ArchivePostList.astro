@@ -1,6 +1,8 @@
 ---
 import { formatDateV2 } from "../utils";
 const { posts } = Astro.props;
+import "../styles/global.css";
+
 posts.sort((a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate));
 ---
 
@@ -8,12 +10,13 @@ posts.sort((a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatte
   {
     posts.map((post) => {
       return (
-        <li>
-          <a href={post.url} class="tag_post-content">
-            <span class="tag-date">[{formatDateV2(post.frontmatter.pubDate)}]</span>
+        <div class="logblock">
+          <a href={post.url} class="logtitle">
             {post.frontmatter.title}
           </a>
-        </li>
+            <div class="logtime">{formatDateV2(post.frontmatter.pubDate)}</div>
+
+        </div>
       );
     })
   }
